@@ -1,0 +1,67 @@
+<!-- herdar de index -->
+{%extends "index.html"%} 
+
+{% block menu %}
+    {% include "menu.html" %}
+    <script src="../static/js/app.js"></script>
+
+    <div class="container mt-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="text-primary m-0">📁 Lista de guias</h2>
+          <a href="/agregarGuiaVista">
+            <button type="button" class="btn btn-success">
+              <i class="fa fa-plus me-2"></i>Agregar Guia
+            </button>
+          </a>
+        </div>
+      
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table-primary text-center">
+              <tr>
+                <th>Nombre Guia Aprendizaje</th>
+                <th>Descipcion</th>
+                <th>programa formacion</th>
+                <th>Guia</th>
+                <th>Nombre Instructor</th>
+                <th>Fecha de Publicacion</th>
+                <th>Regional Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for guia in guias %}
+              <tr>
+                <td class="ps-3">{{ guia.nombre }}</td>
+                <td class="ps-3">{{ guia.descripcion }}</td>
+                <td class="ps-3">{{ guia.programa }}</td>
+                <td class="text-center">
+                  <!-- <a href="/actualizarGeneroVista/{{guia.id}}" class="btn btn-sm btn-outline-primary me-2" title="Editar">
+                    <i class="fa fa-edit"></i>
+                  </a> -->
+                  <button class="btn btn-sm btn-outline-danger" onclick="verGuia('{{guia.id}}')" title="Eliminar">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </td>
+                <td class="text-center">{{ guia.instructor }}</td>
+                <td class="text-center">{{ guia.fecha }}</td>
+                <td class="text-center">
+                    {% for instructor in instructores %}
+                        {% if instructor.id == guia.instructor %}
+                            {{ instructor.regional }}
+                        {% endif %}
+                    {% endfor %}
+               
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+{% endblock %}
+
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{% endblock %}

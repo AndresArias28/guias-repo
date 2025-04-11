@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{% endblock %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="seccion-funcionamiento shadow p-4 rounded bg-light mt-4">
+    <h3 class="text-primary mb-3">📱 Funcionamiento de la Aplicación</h3>
+    <p class="lead">Aplicación desarrollada con <strong>Python</strong>, <strong>Flask</strong> y <strong>MongoEngine</strong>
+        La red de instructores del SENA quiere contar con una aplicación web que les permita compartir guías de aprendizaje para cada uno de los programas donde trabajan. La aplicación debe permitir a los instructores registrarse, así como también poder subir las guías y consultar guías de aprendizaje.
+    </p>
+ 
+
+    <h5 class="text-dark mt-4">🔧 Funcionalidad:</h5>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">✔️ Registro Instructores</li>
+      <li class="list-group-item">✔️ CRUD Guias</li>
+      <li class="list-group-item">✔️ Login de Usuario</li>
+    </ul>
+  </div>
+  
+
+{% endblock %}
+    
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{% endblock %}

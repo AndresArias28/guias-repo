@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5"> 
+        <form  method="POST" action="/agregarGuia" enctype="multipart/form-data" class="was-validated">
+            <h3>Agregar Guia</h3>
+            <div class="mb-3">
+                <label class="form-label">Nombre Guia:</label>
+                <input type="text" class="form-control" name="txtNombre" id="txtNombre" required>
+            </div>
+            <div>
+                <label class="form-label">Descripcion:</label>
+                <input type="text" class="form-control" name="txtDescripcion" id="txtDescripcion" required>
+            </div>
+            <div>
+                <label class="form-label">Programa Formacion:</label>
+                <input type="text" class="form-control" name="txtPrograma" id="txtPrograma" required>
+            </div>
+            <div>
+                <label class="form-label">Guia PDF:</label>
+                <input type="file" class="form-control" name="txtGuiaPDF" id="txtGuiaPDF" accept=".pdf" required>
+            </div>
+     
+            <button type="submit" class="btn btn-primary">
+                Guardar
+            </button>
+            <a href="/guiasVista">
+                <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+        </form>
+    </div>
+{% endblock %}
+
+{% block piePagina %}
+    {% include "piePagina.html" %}
+{% endblock %}

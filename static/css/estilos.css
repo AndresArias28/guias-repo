@@ -1,0 +1,31 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contenido-principal {
+  flex: 1;
+  
+}
+
+footer {
+  background-color: #f1f1f1;
+  padding: 1rem;
+}
+
+table th, table td {
+    vertical-align: middle !important;
+  }
+  
+  .btn-outline-primary:hover,
+  .btn-outline-danger:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease-in-out;
+  }

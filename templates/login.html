@@ -39,13 +39,7 @@ messages%}
       <button type="button" class="btn btn-primary w-100" onclick="login()">
         Login
       </button>
-      <span
-        >¿Has olvidado tu contraseña?
-        <a href="#" data-bs-toggle="modal" data-bs-target="#modalRecuperar"
-          >Recuperar</a
-        >
-      </span
-      >
+    
       <br />
       <span
         >¿No tienes cuenta?
@@ -121,13 +115,13 @@ messages%}
   <div class="modal-dialog">
     <form
       method="POST"
-      action="/usuarios"
+      action="/instructorRegister"
       enctype="multipart/form-data"
       class="was-validated"
     >
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalRegistrarLabel">Registrar</h5>
+          <h5 class="modal-title" id="modalRegistrarLabel">Registrar Instructor</h5>
           <button
             type="button"
             class="btn-close"
@@ -146,14 +140,14 @@ messages%}
           />
           <input
             type="text"
-            name="userId"
+            name="regional"
             class="form-control mt-2"
-            placeholder="Nombre de usuario"
+            placeholder="regional"
             required
           />
           <input
             type="email"
-            name="correo"
+            name="email"
             class="form-control mt-2"
             placeholder="Correo electrónico"
             required
@@ -170,7 +164,7 @@ messages%}
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Enviar</button>
           <button
-            type="button"
+            type="submit"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >

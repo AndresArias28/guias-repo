@@ -26,18 +26,34 @@ def enviarCorreo(destinatario, asunto, mensaje):
 @app.route("/instructorRegister", methods=["POST"])
 def create_instructor():
     try:
-        data = request.get_json(force=True)
-        instructor = Instructores(**data)
-        instructor.save()
-        correo=data.get("email")
-        passw=data.get("password")
-        print("correo",correo)
-        instructor = Instructores.objects(email=correo).first()
-        mensaje = f'Hola, has hecho el registro en la aplicación. Este es el reporte de tus datos son :  correo: {correo}, password: {passw}'
-        destinatarios = [correo, "andresan0328@gmail.com"]
+        nombre = request.form.get("nombre")
+        password = request.form.get("password")
+        email = request.form.get("email")
+        regional = request.form.get("regional")
+        
+        if not all([nombre, password, email, regional]):
+            return jsonify({"message": "Faltan datos"}), 400
+        
+        instruc = Instructores(
+            nombre=nombre,
+            password=password,
+            email=email,
+            regional=regional
+        )
+        
+        instruc.save()
+
+        print("correo", email)
+        print("password", password)
+
+        mensaje = f'Hola, has hecho el registro en la aplicación. Este es el reporte de tus datos: correo: {email}, password: {password}'
+        destinatarios = [email, "andresan0328@gmail.com"]
+
         hilo = threading.Thread(target=enviarCorreo, args=(destinatarios, 'Registro exitoso', mensaje))
         hilo.start()
-        return jsonify({"message": "genero guardado"}), 201
+
+        flash('Instructor registrado exitosamente.', 'success')
+        return render_template('login.html'), 200
     except Exception as e:
         print("Error al crear el instructor:", e)
         return jsonify({"error": "Error al crear el instructor"}), 500
